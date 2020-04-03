@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group 'com.maimiaosc'
+version '0.0.1'
+apply from: 'upload.gradle'
+
+
+sourceCompatibility = 1.8
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly('org.springframework.cloud:spring-cloud-gateway-core:2.2.2.RELEASE')
+    compileOnly('org.springframework:spring-web:5.2.5.RELEASE')
+}

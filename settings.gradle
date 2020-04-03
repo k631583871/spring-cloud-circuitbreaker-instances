@@ -1,0 +1,2 @@
+rootProject.name = 'spring-cloud-circuitbreaker-instances'
+include 'spring-cloud-circuitbreaker-instances'

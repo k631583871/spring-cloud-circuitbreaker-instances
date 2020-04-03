@@ -1,0 +1,41 @@
+apply plugin: 'maven'
+
+def getReleaseRepositoryUrl() {
+    return property('RELEASE_REPOSITORY_URL_MAIMIAOSC')
+}
+
+def getSnapshotRepositoryUrl() {
+    return property('SNAPSHOT_REPOSITORY_URL_MAIMIAOSC')
+}
+
+afterEvaluate { project ->
+    uploadArchives {
+        repositories {
+            mavenDeployer {
+                repository(url: getReleaseRepositoryUrl()) {
+                    authentication(userName: MAIMIAOSC_NEXUS_USERNAME, password: MAIMIAOSC_NEXUS_PASSWORD)
+                }
+
+                snapshotRepository(url: getSnapshotRepositoryUrl()) {
+                    authentication(userName: MAIMIAOSC_NEXUS_USERNAME, password: MAIMIAOSC_NEXUS_PASSWORD)
+                }
+                pom.project {
+                    groupId "com.manymobi"
+                    artifactId "spring-cloud-circuitbreaker-instances"
+                    version project.version
+                    packaging "jar"
+                }
+            }
+        }
+    }
+
+    //源代码
+    task androidSourcesJar(type: Jar) {
+        classifier = 'sources'
+        from sourceSets.main.java.srcDirs
+    }
+
+    artifacts {
+        archives androidSourcesJar
+    }
+}
