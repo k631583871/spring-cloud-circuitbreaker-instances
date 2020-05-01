@@ -1,15 +1,13 @@
 apply plugin: 'java-library'
 apply plugin: 'maven-publish'
 
-def getReleaseRepositoryUrl() {
-    return property('RELEASE_REPOSITORY_URL_MAIMIAOSC')
+def getUsername() {
+    return hasProperty("sonatype.username") ? property("sonatype.username") : ""
 }
 
-def getSnapshotRepositoryUrl() {
-    return property('SNAPSHOT_REPOSITORY_URL_MAIMIAOSC')
+def getPassword() {
+    return hasProperty("sonatype.password") ? property("sonatype.password") : ""
 }
-
-
 
 java {
     withJavadocJar()
@@ -19,6 +17,9 @@ java {
 publishing {
     publications {
         mavenJava(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
             groupId "com.manymobi"
             artifactId "spring-cloud-circuitbreaker-instances"
             pom {
@@ -39,9 +40,9 @@ publishing {
                     }
                 }
                 scm {
-                    connection = 'scm:git:git://example.com/my-library.git'
-                    developerConnection = 'scm:git:ssh://example.com/my-library.git'
-                    url = 'http://example.com/my-library/'
+                    connection = 'scm:git:git://github.com/k631583871/spring-cloud-circuitbreaker-instances.git'
+                    developerConnection = 'scm:git:ssh://github.com/k631583871/spring-cloud-circuitbreaker-instances.git'
+                    url = 'https://github.com/k631583871/spring-cloud-circuitbreaker-instances'
                 }
             }
         }
@@ -49,20 +50,20 @@ publishing {
     repositories {
         maven {
             // change URLs to point to your repos, e.g. http://my.org/repo
-            def releasesRepoUrl = "$buildDir/repos/releases"
-            def snapshotsRepoUrl = "$buildDir/repos/snapshots"
-            url = version.endsWith('SNAPSHOT') ? getSnapshotRepositoryUrl() : getReleaseRepositoryUrl()
+            def usernameBintray = getUsername()
+            def passwordBintray = getPassword()
+            def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+            def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots"
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
             credentials {
-                username = MAIMIAOSC_NEXUS_USERNAME
-                password = MAIMIAOSC_NEXUS_PASSWORD
+                username = usernameBintray
+                password = passwordBintray
             }
         }
     }
 }
-
-
 javadoc {
-    if(JavaVersion.current().isJava9Compatible()) {
+    if (JavaVersion.current().isJava9Compatible()) {
         options.addBooleanOption('html5', true)
     }
 }
