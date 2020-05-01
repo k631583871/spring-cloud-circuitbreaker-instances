@@ -1,5 +1,6 @@
 apply plugin: 'java-library'
 apply plugin: 'maven-publish'
+apply plugin: 'signing'
 
 def getUsername() {
     return hasProperty("sonatype.username") ? property("sonatype.username") : ""
@@ -18,8 +19,8 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
-            groupId "com.manymobi"
-            artifactId "spring-cloud-circuitbreaker-instances"
+            groupId = "com.manymobi"
+            artifactId = "spring-cloud-circuitbreaker-instances"
             pom {
                 name = 'spring-cloud-circuitbreaker-instances'
                 description = 'Single-instance CircuitBreaker'
@@ -47,7 +48,6 @@ publishing {
     }
     repositories {
         maven {
-            // change URLs to point to your repos, e.g. http://my.org/repo
             def usernameL = getUsername()
             def passwordL = getPassword()
             def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
@@ -60,6 +60,11 @@ publishing {
         }
     }
 }
+
+signing {
+    sign publishing.publications.mavenJava
+}
+
 javadoc {
     if (JavaVersion.current().isJava9Compatible()) {
         options.addBooleanOption('html5', true)
