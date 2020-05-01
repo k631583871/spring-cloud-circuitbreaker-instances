@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'com.maimiaosc'
-version '0.1-SNAPSHOT'
+version '1.0'
 apply from: 'upload.gradle'
 
 

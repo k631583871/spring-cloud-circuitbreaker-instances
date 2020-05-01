@@ -18,8 +18,6 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
-            artifact sourcesJar
-            artifact javadocJar
             groupId "com.manymobi"
             artifactId "spring-cloud-circuitbreaker-instances"
             pom {
@@ -50,14 +48,14 @@ publishing {
     repositories {
         maven {
             // change URLs to point to your repos, e.g. http://my.org/repo
-            def usernameBintray = getUsername()
-            def passwordBintray = getPassword()
-            def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+            def usernameL = getUsername()
+            def passwordL = getPassword()
+            def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
             def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots"
             url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
             credentials {
-                username = usernameBintray
-                password = passwordBintray
+                username = usernameL
+                password = passwordL
             }
         }
     }
