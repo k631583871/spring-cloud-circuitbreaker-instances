@@ -23,7 +23,7 @@ In order to prevent conceptual conflicts, special interpretation
 -Instance: each startup of the application is an instance, and different ports of the same IP are different instances
 
 
-## 使用方法
+## Instructions
 
 -   Add spring-cloud-circuitbreaker-instances dependency
     -   Maven:
