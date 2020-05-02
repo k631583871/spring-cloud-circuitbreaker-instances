@@ -50,4 +50,4 @@ In order to prevent conceptual conflicts, special interpretation
             - InstancesCircuitBreaker=myCircuitBreaker
     ```
 
-- See [official documents](https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.2.RELEASE/reference/html/#spring-cloud-circuitbreaker-filter-factory) for other ways of use Just replace filters.name "circuitbreaker" with "instancescircuitbreaker"
+- See [official documents](https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.2.RELEASE/reference/html/#spring-cloud-circuitbreaker-filter-factory) for other ways of use Just replace filters.name "CircuitBreaker" with "InstancesCircuitBreaker"
