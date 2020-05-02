@@ -10,17 +10,16 @@ An extension of spring cloud gateway circuit breaker realizes the fusing of a si
 
 
 
--Spring cloud gateway circuit breaker will use the same fuse for the same args.name. As long as there is a problem with one instance, the service under the fuse cannot be accessed.
-
-**In particular, when the "loadbalancerclientfilter" is used for load balancing, configure the fuse. When an instance under load balancing has a problem, triggering the fuse will cause other instances to be inaccessible. * *
-
+- Spring cloud gateway circuit breaker will use the same fuse for the same args.name. As long as there is a problem with one instance, the service under the fuse cannot be accessed.
+**In particular, when the "loadbalancerclientfilter" is used for load balancing, configure the fuse. When an instance under load balancing has a problem, triggering the fuse will cause other instances to be inaccessible.**
 
 
--The instance circuit breaker implements separate fuse calculation for each instance of specific access. When there is a problem in one instance of the same application, the access of other instances will not be affected.
+
+- The instance circuit breaker implements separate fuse calculation for each instance of specific access. When there is a problem in one instance of the same application, the access of other instances will not be affected.
 ## Explanation of terms
 In order to prevent conceptual conflicts, special interpretation
--Same application: indicates an application with the same name in the registration center
--Instance: each startup of the application is an instance, and different ports of the same IP are different instances
+- Same application: indicates an application with the same name in the registration center
+- Instance: each startup of the application is an instance, and different ports of the same IP are different instances
 
 
 ## Instructions
@@ -50,4 +49,5 @@ In order to prevent conceptual conflicts, special interpretation
             - InstancesCircuitBreaker=myCircuitBreaker
     ```
 
-- See [official documents](https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.2.RELEASE/reference/html/#spring-cloud-circuitbreaker-filter-factory) for other ways of use Just replace filters.name "CircuitBreaker" with "InstancesCircuitBreaker"
+- See [official documents](https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.2.RELEASE/reference/html/#spring-cloud-circuitbreaker-filter-factory) 
+for other ways of use Just replace filters.name "CircuitBreaker" with "InstancesCircuitBreaker"
