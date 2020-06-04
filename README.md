@@ -51,3 +51,8 @@ In order to prevent conceptual conflicts, special interpretation
 
 - See [official documents](https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.2.RELEASE/reference/html/#spring-cloud-circuitbreaker-filter-factory) 
 for other ways of use Just replace filters.name "CircuitBreaker" with "InstancesCircuitBreaker"
+
+
+## License
+
+Spring Cloud Circuitbreaker Instances is Open Source software released under the Apache 2.0 license.

@@ -46,3 +46,7 @@
     ```
 - 其他使用方式可看[官方文档](https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.2.RELEASE/reference/html/#spring-cloud-circuitbreaker-filter-factory)
 只需要把 filters.name  “CircuitBreaker” 换成 “InstancesCircuitBreaker” 即可
+
+## License
+
+Spring Cloud Circuitbreaker Instances is Open Source software released under the Apache 2.0 license.
